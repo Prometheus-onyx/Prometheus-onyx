@@ -107,7 +107,7 @@ def utility(board):
     """
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
-    winner_ = terminal(board)
+    winner_ = player(board)
     if winner_ == X:
         return 1
     elif winner_ == O:
