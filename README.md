@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Ekron
+- 👋 Hi, I’m @Prometheus-onyx
 - 👀 I’m interested in ...Realm of Computing
 - 🌱 I’m currently learning ...Prog. languages
 - 💞️ I’m looking to collaborate on ...VA
