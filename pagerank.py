@@ -79,19 +79,18 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    # Initialize PageRank values
-    ranks = {page: 1 / len(corpus) for page in corpus}
+    # Initialize visit counts
+    counts = {page: 0 for page in corpus}
+    # Start with a random page
+    page = random.choice(list(corpus.keys()))
     for _ in range(n):
-        # Sample a page according to the transition model
-        page = random.choices(list(corpus.keys()), weights=list(ranks.values()))[0]
-        # Update the PageRank values according to the transition model
+        counts[page] += 1
         distribution = transition_model(corpus, page, damping_factor)
-        for p in ranks:
-            ranks[p] = ranks[p] * (1 - damping_factor) + distribution.get(p, 0) * damping_factor
-    # Normalize the PageRank values
-    total = sum(ranks.values())
-    for p in ranks:
-        ranks[p] /= total
+        pages = list(distribution.keys())
+        probabilities = list(distribution.values())
+        page = random.choices(pages, weights=probabilities)[0]
+    # Normalize the counts to get probabilities
+    ranks = {page: counts[page] / n for page in corpus}
     return ranks
 
 
